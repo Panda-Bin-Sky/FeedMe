@@ -1,0 +1,119 @@
+# FeedMe user-facing configuration.
+# Category display order follows the order below.
+
+settings:
+  defaultSource: hacker-news-best
+  maxItemsPerFeed: 30
+  dataPath: ./public/data
+
+summary:
+  contentMaxChars: 5000
+  temperature: 0.3
+  maxTokens: 500
+  unavailableMessages:
+    zh: 无法生成摘要。
+    en: Unable to generate summary.
+  prompt: |
+    You are a professional content summarizer. Generate a concise and accurate summary in {{summaryLanguage}}.
+    The summary should:
+    1. Capture the main points and key information.
+    2. Be clear, fluent, and natural in {{summaryLanguage}}.
+    3. Stay around 100 words or fewer.
+    4. Remain objective and avoid adding opinions.
+    5. If the content is empty or lacks useful information, do not invent details.
+    6. If the source title or content is in another language, summarize the key information in {{summaryLanguage}}.
+
+    Article title:
+    {{title}}
+
+    Article content:
+    {{content}}
+
+categories:
+  - id: techNews
+    name:
+      zh: 科技资讯
+      en: Tech News
+  - id: financeNews
+    name:
+      zh: 财经资讯
+      en: Finance News
+  - id: personalBlogs
+    name:
+      zh: 个人博客
+      en: Personal Blogs
+  - id: companyBlogs
+    name:
+      zh: 企业博客
+      en: Company Blogs
+  - id: openSource
+    name:
+      zh: 开源项目
+      en: Open Source
+  - id: research
+    name:
+      zh: 科研资讯
+      en: Research
+  - id: forums
+    name:
+      zh: 论坛
+      en: Forums
+  - id: anime
+    name:
+      zh: 番剧资讯
+      en: Anime
+  - id: sports
+    name:
+      zh: 体育资讯
+      en: Sports
+  - id: podcasts
+    name:
+      zh: 播客
+      en: Podcasts
+
+sources:
+ # ========== 国内财经媒体 ==========
+  - id: caixin
+    name: "财新网"
+    url: "https://rss.caixin.com/yw.xml"
+    category: "财经"
+  
+  - id: jrj
+    name: "金融界"
+    url: "https://www.jrj.com.cn/rss/cj.xml"
+    category: "财经"
+  
+  - id: eastmoney
+    name: "东方财富"
+    url: "https://news.eastmoney.com/rss/stock.xml"
+    category: "财经"
+ # ========== 国内综合新闻 ==========
+  - id: people
+    name: "人民网"
+    url: "http://www.people.com.cn/rss/politics.xml"
+    category: "国内"
+  
+  - id: xinhua
+    name: "新华网"
+    url: "http://www.xinhuanet.com/feed/news/1.xml"
+    category: "国内"
+
+  # ========== 国际新闻 ==========
+  - id: bbc
+    name: "BBC News"
+    url: "http://feeds.bbci.co.uk/news/rss.xml"
+    category: "国际"
+  
+  - id: reuters
+    name: "Reuters"
+    url: "https://www.reuters.com/rss/worldNews"
+    category: "国际"
+  
+  
+  - id: google-product-news
+    name:
+      zh: Google 产品和技术新闻
+      en: Google Product and Technology News
+    url: https://blog.google/rss/
+    category: companyBlogs
+  
