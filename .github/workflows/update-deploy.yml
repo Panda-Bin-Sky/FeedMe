@@ -1,10 +1,10 @@
 name: 更新数据并部署
 
 on:
-schedule:
+    schedule:
     # 每天凌晨 2 点（UTC 时间）执行，北京时间是上午 10 点
     - cron: '0 2 * * *'
-workflow_dispatch:  # 这个保留，方便手动触发
+    workflow_dispatch:  # 这个保留，方便手动触发
 
 permissions:
   contents: write
