@@ -24,17 +24,18 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '22'
-          # 关键：启用 corepack，这将使 pnpm 命令可用
-          cache: 'pnpm'
 
-      - name: Setup pnpm via corepack
+      # 通过 npm 全局安装 pnpm，并将其添加到 PATH
+      - name: Install pnpm globally
         run: |
-          corepack enable
-          corepack prepare pnpm@8 --activate
+          npm install -g pnpm@8
+          echo "$(npm prefix -g)/bin" >> $GITHUB_PATH
 
-      - name: Verify pnpm installation
+      # 验证 pnpm 是否可用
+      - name: Verify pnpm
         run: pnpm --version
 
+      # 后续所有 pnpm 命令都可以直接使用
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
